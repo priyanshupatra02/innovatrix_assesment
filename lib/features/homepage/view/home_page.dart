@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
+import 'package:innovatrix_assesment/features/homepage/view/widgets/home_page_body.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget {
@@ -21,15 +21,7 @@ class HomeView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home Page'),
       ),
-      body: ListView.builder(
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: 'Rick Sanchez'.text.bold.subtitle1(context).make(),
-              leading: const Icon(Icons.person),
-              subtitle: 'Scientist'.text.subtitle2(context).make(),
-            );
-          }),
+      body: const HomePageBody(),
     );
   }
 }
