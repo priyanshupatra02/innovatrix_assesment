@@ -6,8 +6,13 @@ import 'package:innovatrix_assesment/core/router/router.gr.dart';
 class AppRouter extends $AppRouter {
   @override
   late final List<AutoRoute> routes = [
-    AutoRoute(
+    AdaptiveRoute(
       page: CounterRoute.page,
+      path: '/counter-page',
+
+    ),
+    AdaptiveRoute(
+      page: HomeRoute.page,
       path: '/',
       initial: true,
     ),
