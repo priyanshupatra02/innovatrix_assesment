@@ -1,0 +1,2 @@
+Hello innovatrix_assesment!
+Made using riverpod_simple_architecture.
