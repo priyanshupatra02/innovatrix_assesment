@@ -390,6 +390,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.0"
+  flutter_form_builder:
+    dependency: "direct main"
+    description:
+      name: flutter_form_builder
+      sha256: "560eb5e367d81170c6ade1e7ae63ecc5167936ae2cdfaae8a345e91bce19d2f2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.2.1"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -469,6 +477,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  form_builder_validators:
+    dependency: "direct main"
+    description:
+      name: form_builder_validators
+      sha256: "19aa5282b7cede82d0025ab031a98d0554b84aa2ba40f12013471a3b3e22bf02"
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.1.0"
   freezed_annotation:
     dependency: transitive
     description:
@@ -493,6 +509,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  google_fonts:
+    dependency: "direct main"
+    description:
+      name: google_fonts
+      sha256: b1ac0fe2832c9cc95e5e88b57d627c5e68c223b9657f4b96e1487aa9098c7b82
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.2.1"
   graphs:
     dependency: transitive
     description:
@@ -557,6 +581,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  iconly:
+    dependency: "direct main"
+    description:
+      name: iconly
+      sha256: "22f16dd28984d232891299ead9d9b75ae5a32b4d9cdf63e8e574f1ceb11dcbd9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   internet_connection_checker_plus:
     dependency: "direct main"
     description:
@@ -1228,4 +1260,4 @@ packages:
     version: "3.1.2"
 sdks:
   dart: ">=3.3.1 <4.0.0"
-  flutter: ">=3.19.0"
+  flutter: ">=3.19.2"
