@@ -9,14 +9,14 @@ import 'package:talker_dio_logger/talker_dio_logger.dart';
 
 void main() {
   testProvider(
-    'expect dio.baseUrl should be "https://randomuser.me/api/"',
+    'expect dio.baseUrl should be "https://rickandmortyapi.com"',
     provider: dioProvider,
     expect: () => [
       isA<DioForNative>()
           .having(
             (d) => d.options.baseUrl,
             'default interceptor should be 2',
-            equals("https://randomuser.me/api/"),
+            equals("https://rickandmortyapi.com"),
           )
           .having(
             (d) => d.interceptors.length,

@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:innovatrix_assesment/bootstrap.dart';
@@ -14,7 +13,7 @@ import 'package:talker_dio_logger/talker_dio_logger.dart';
 final dioProvider = Provider.autoDispose<Dio>(
   (ref) {
     final dio = Dio();
-    dio.options.baseUrl = 'https://randomuser.me/api/';
+    dio.options.baseUrl = 'https://rickandmortyapi.com';
     if (kDebugMode) {
       dio.interceptors.add(TimeResponseInterceptor());
       dio.interceptors.add(FormDataInterceptor());

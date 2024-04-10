@@ -24,6 +24,7 @@ dependencies:
   hive_flutter: ^1.1.0
   internet_connection_checker_plus: ^2.3.0
   intl: ^0.18.1
+  multiple_result: ^5.1.0
   path_provider: ^2.1.2
   platform_info: ^4.0.2
   responsive_framework: ^1.4.0
