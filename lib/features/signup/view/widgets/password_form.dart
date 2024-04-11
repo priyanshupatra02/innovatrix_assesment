@@ -21,7 +21,6 @@ class _PasswordFormState extends State<PasswordForm> {
   Widget build(BuildContext context) {
     return CustomTextForm(
       hintText: 'Password',
-,
       isDense: false,
       contentPadding: null,
       name: SignupFormKeys.password,
