@@ -18,7 +18,7 @@ class HomePageBody extends StatelessWidget {
             itemCount: charactersModel.data.characters.results.length,
             itemBuilder: (context, index) {
               final characterResult = charactersModel.data.characters.results;
-              return CharacterWidget(characterResult: characterResult);
+              return CharacterWidget(index: index, characterResult: characterResult);
             },
           );
         });

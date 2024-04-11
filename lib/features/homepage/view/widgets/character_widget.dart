@@ -3,9 +3,10 @@ import 'package:innovatrix_assesment/data/model/character_model.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CharacterWidget extends StatelessWidget {
+  final int index;
   const CharacterWidget({
     super.key,
-    required this.characterResult,
+    required this.characterResult, required this.index,
   });
 
   final List<CharacterResults> characterResult;
@@ -20,9 +21,7 @@ class CharacterWidget extends StatelessWidget {
         width: 70,
         fit: BoxFit.cover,
       ),
-      subtitle: '${characterResult[index].species} - ${characterResult[index].status}'
-          .text
-          .make(),
+      subtitle: '${characterResult[index].species} - ${characterResult[index].status}'.text.make(),
     );
   }
 }
