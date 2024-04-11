@@ -15,7 +15,7 @@ class EmailForm extends StatelessWidget {
     return CustomTextForm(
       hintText: 'Email',
       isDense: false,
-      initialValue: 'w@w.com',
+
       contentPadding: null,
       name: SignupFormKeys.email,
       keyboardType: TextInputType.emailAddress,

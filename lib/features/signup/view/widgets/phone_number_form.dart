@@ -16,7 +16,7 @@ class PhoneNumberForm extends StatelessWidget {
       hintText: 'Phone Number',
       isDense: false,
       contentPadding: null,
-      initialValue: '1121212332',
+
       name: SignupFormKeys.phoneNumber,
       keyboardType: TextInputType.number,
       validator: FormBuilderValidators.compose([
