@@ -24,11 +24,11 @@ class SignupBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        const NameText(),
+        const PhoneNumberText(),
         10.heightBox,
         const FadeInSlide(
           duration: .5,
-          child: NameForm(),
+          child: PhoneNumberForm(),
         ),
         20.heightBox,
         const EmailText(),

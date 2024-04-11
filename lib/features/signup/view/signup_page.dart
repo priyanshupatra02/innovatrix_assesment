@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:innovatrix_assesment/core/router/router.gr.dart';
 import 'package:innovatrix_assesment/features/signup/const/signup_form_keys.dart';
 import 'package:innovatrix_assesment/features/signup/controller/signup_pod.dart';
 import 'package:innovatrix_assesment/features/signup/view/widgets/signup_body.dart';
@@ -41,9 +40,10 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
 
       if (signUpFormKey.currentState!.saveAndValidate()) {
         ref.read(signupProvider.notifier).signup(
-              name: signUpFormKey.currentState!.fields[SignupFormKeys.name]!.value.toString(),
+              name:
+                  signUpFormKey.currentState!.fields[SignupFormKeys.phoneNumber]!.value.toString(),
               email: signUpFormKey.currentState!.fields[SignupFormKeys.email]!.value.toString(),
-              password:
+              phoneNumber:
                   signUpFormKey.currentState!.fields[SignupFormKeys.password]!.value.toString(),
               onUserSignedup: (signupModelResponse) {
                 // if (signupModelResponse.user.jwt.isNotEmpty) {

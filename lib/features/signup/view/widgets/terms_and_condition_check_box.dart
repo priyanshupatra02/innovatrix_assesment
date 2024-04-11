@@ -32,7 +32,7 @@ class TermsAndConditionCheckBox extends StatelessWidget {
             },
           ),
           TermsAndConditionsText(
-            text1: "I agree to Task Ninja's ",
+            text1: "I agree to Innovatrix Assesment ",
             text2: "Terms and Conditions.",
             onTap: () {},
           ),

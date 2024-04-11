@@ -11,7 +11,7 @@ class SubtitleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return FadeInSlide(
       duration: .4,
-      child: "Your Gateway to Remember Everything 🧠".text.subtitle1(context).make(),
+      child: "Your Idea, Our Work 🧠".text.subtitle1(context).make(),
     );
   }
 }

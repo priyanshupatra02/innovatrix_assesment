@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:innovatrix_assesment/shared/animated_widgets/fade_in_slide.dart';
-
 import 'package:velocity_x/velocity_x.dart';
 
-class NameText extends StatelessWidget {
-  const NameText({
+class PhoneNumberText extends StatelessWidget {
+  const PhoneNumberText({
     super.key,
   });
 
@@ -13,7 +12,7 @@ class NameText extends StatelessWidget {
     return FadeInSlide(
       duration: .5,
       child: Text(
-        "Name",
+        "Phone Number",
         style: context.titleMedium!.copyWith(fontWeight: FontWeight.bold),
       ),
     );

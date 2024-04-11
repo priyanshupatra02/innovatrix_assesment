@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:innovatrix_assesment/features/counter/controller/counter_state_pod.dart';
 import 'package:innovatrix_assesment/features/theme_segmented_btn/view/theme_segmented_btn.dart';
 import 'package:innovatrix_assesment/l10n/l10n.dart';
-import 'package:innovatrix_assesment/shared/widget/app_locale_popup.dart';
+
 
 @RoutePage(
   deferredLoading: true,
@@ -28,7 +28,7 @@ class CounterView extends StatelessWidget {
       appBar: AppBar(
         title: const CounterAppBarTitle(),
         actions: const [
-          AppLocalePopUp(),
+          // AppLocalePopUp(),
         ],
       ),
       body: const Center(

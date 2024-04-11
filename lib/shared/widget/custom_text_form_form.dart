@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:innovatrix_assesment/const/app_colors.dart';
-
 import 'package:velocity_x/velocity_x.dart';
 
 class CustomTextForm extends StatelessWidget {
@@ -61,7 +60,9 @@ class CustomTextForm extends StatelessWidget {
     this.filledColor = Colors.transparent,
     this.isObscureText = false,
     this.onTapOutside,
-    this.onSubmit, this.isDense = true, this.contentPadding = EdgeInsets.zero,
+    this.onSubmit,
+    this.isDense = true,
+    this.contentPadding = EdgeInsets.zero,
   });
 
   @override
@@ -85,7 +86,7 @@ class CustomTextForm extends StatelessWidget {
       maxLines: maxLine, // to allow the text field to expand vertically as more lines are added
       style: GoogleFonts.inter(
         fontSize: Vx.dp16,
-        color: Colors.white.withOpacity(0.7),
+        color: Colors.white,
         fontWeight: FontWeight.w600,
       ),
       focusNode: focusNode,
@@ -98,7 +99,7 @@ class CustomTextForm extends StatelessWidget {
         hintText: hintText,
         hintStyle: GoogleFonts.inter(
           fontSize: Vx.dp16,
-          color: Colors.white.withOpacity(0.2),
+          color: Colors.white.withOpacity(0.5),
           fontWeight: FontWeight.w600,
         ),
         filled: isFilled,

@@ -7,14 +7,30 @@ class AppRouter extends $AppRouter {
   @override
   late final List<AutoRoute> routes = [
     AdaptiveRoute(
-      page: CounterRoute.page,
-      path: '/counter-page',
-
+      page: LoginBaseRoute.page,
+      initial: true,
+      path: '/',
+      guards: const [
+        // SplashGuard(loginDbService: loginDbService),
+      ],
+      children: [
+        RedirectRoute(
+          path: '',
+          redirectTo: 'login',
+        ),
+        AdaptiveRoute(
+          page: LoginRoute.page,
+          path: 'login',
+        ),
+        AdaptiveRoute(
+          page: SignupRoute.page,
+          path: 'signup',
+        ),
+      ],
     ),
     AdaptiveRoute(
       page: HomeRoute.page,
-      path: '/',
-      initial: true,
+      path: '/home-route',
     ),
   ];
 }

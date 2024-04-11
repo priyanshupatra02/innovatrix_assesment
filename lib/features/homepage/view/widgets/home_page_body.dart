@@ -23,6 +23,7 @@ class HomePageBody extends StatelessWidget {
                 leading: Image.network(
                   characterResult[index].image,
                   height: 100,
+                  width: 70,
                   fit: BoxFit.cover,
                 ),
                 subtitle: '${characterResult[index].species} - ${characterResult[index].status}'

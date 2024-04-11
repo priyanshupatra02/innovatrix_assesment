@@ -16,7 +16,7 @@ class LoginBasePage extends StatelessWidget {
       body: <Widget>[
         20.heightBox,
         const HeaderText(),
-        15.heightBox,
+        5.heightBox,
         const SubtitleText(),
         50.heightBox,
         // .objectTopCenter().pOnly(top: 30, bottom: 70),

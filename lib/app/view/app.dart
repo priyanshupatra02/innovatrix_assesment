@@ -10,7 +10,6 @@ import 'package:innovatrix_assesment/core/theme/app_theme.dart';
 import 'package:innovatrix_assesment/core/theme/theme_controller.dart';
 import 'package:innovatrix_assesment/l10n/l10n.dart';
 import 'package:innovatrix_assesment/shared/helper/global_helper.dart';
-import 'package:innovatrix_assesment/shared/pods/locale_pod.dart';
 import 'package:innovatrix_assesment/shared/widget/no_internet_widget.dart';
 import 'package:innovatrix_assesment/shared/widget/responsive_wrapper.dart';
 
@@ -30,13 +29,13 @@ class _AppState extends ConsumerState<App> with GlobalHelper {
   Widget build(BuildContext context) {
     final approuter = ref.watch(autorouterProvider);
     final currentTheme = ref.watch(themecontrollerProvider);
-    final locale = ref.watch(localePod);
+    // final locale = ref.watch(localePod);
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Example App',
-      theme: Themes.theme,
+      theme: Themes.lightTheme,
       darkTheme: Themes.darkTheme,
-      themeMode: currentTheme,
+      themeMode: ThemeMode.dark,
       routerConfig: approuter.config(
         placeholder: (context) => const SizedBox.shrink(),
         navigatorObservers: () => [
@@ -45,7 +44,7 @@ class _AppState extends ConsumerState<App> with GlobalHelper {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      locale: locale,
+      // locale: locale,
       builder: (context, child) {
         if (mounted) {
           ///Used for responsive design
@@ -62,8 +61,7 @@ class _AppState extends ConsumerState<App> with GlobalHelper {
           final mediaquery = MediaQuery.of(context);
           child = MediaQuery(
             data: mediaquery.copyWith(
-              textScaler:
-                  TextScaler.linear(mediaquery.textScaleFactor.clamp(0, 1)),
+              textScaler: TextScaler.linear(mediaquery.textScaleFactor.clamp(0, 1)),
             ),
             child: child,
           );
