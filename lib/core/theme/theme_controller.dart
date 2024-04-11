@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:innovatrix_assesment/bootstrap.dart';
 import 'package:innovatrix_assesment/core/local_storage/app_storage_pod.dart';
 import 'package:innovatrix_assesment/data/entities/local_theme_entity/theme_storage.dart';
 
@@ -15,7 +16,7 @@ class ThemeModeController extends AutoDisposeNotifier<ThemeMode> {
   @override
   ThemeMode build() {
     final themeName = ref.watch(isarProvider).localThemeStorages.getSync(0)?.themeName;
-
+    talker.debug('ThemeModeController - : $themeName');
     if (themeName == ThemeMode.light.name) {
       return ThemeMode.light;
     } else if (themeName == ThemeMode.dark.name) {

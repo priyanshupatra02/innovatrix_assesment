@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:innovatrix_assesment/features/signup/view/widgets/account_existing_signin.dart';
 import 'package:innovatrix_assesment/features/signup/view/widgets/email_form.dart';
 import 'package:innovatrix_assesment/features/signup/view/widgets/email_text.dart';
-import 'package:innovatrix_assesment/features/signup/view/widgets/name_form.dart';
+import 'package:innovatrix_assesment/features/signup/view/widgets/phone_number_form.dart';
 import 'package:innovatrix_assesment/features/signup/view/widgets/name_text.dart';
 import 'package:innovatrix_assesment/features/signup/view/widgets/password_form.dart';
 import 'package:innovatrix_assesment/features/signup/view/widgets/password_text.dart';
-import 'package:innovatrix_assesment/features/signup/view/widgets/terms_and_condition_check_box.dart';
 import 'package:innovatrix_assesment/shared/animated_widgets/fade_in_slide.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -44,8 +43,8 @@ class SignupBody extends StatelessWidget {
           duration: .6,
           child: PasswordForm(),
         ),
-        20.heightBox,
-        TermsAndConditionCheckBox(termsCheck: termsCheck, isDark: isDark),
+        // 20.heightBox,
+        // TermsAndConditionCheckBox(termsCheck: termsCheck, isDark: isDark),
         20.heightBox,
         const AccountExistingWidget(),
         //TODO: Enable Social Logins
