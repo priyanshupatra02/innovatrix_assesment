@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:innovatrix_assesment/data/model/character_model.dart';
 import 'package:innovatrix_assesment/features/homepage/controller/characters_pod.dart';
+import 'package:innovatrix_assesment/features/homepage/view/widgets/character_widget.dart';
 import 'package:innovatrix_assesment/shared/riverpod_ext/asynvalue_easy_when.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -18,18 +20,7 @@ class HomePageBody extends StatelessWidget {
             itemCount: charactersModel.data.characters.results.length,
             itemBuilder: (context, index) {
               final characterResult = charactersModel.data.characters.results;
-              return ListTile(
-                title: characterResult[index].name.text.xl.bold.make(),
-                leading: Image.network(
-                  characterResult[index].image,
-                  height: 100,
-                  width: 70,
-                  fit: BoxFit.cover,
-                ),
-                subtitle: '${characterResult[index].species} - ${characterResult[index].status}'
-                    .text
-                    .make(),
-              );
+              return CharacterWidget(characterResult: characterResult);
             },
           );
         });
