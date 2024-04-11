@@ -22,13 +22,18 @@ const LocalUserSchema = CollectionSchema(
       name: r'email',
       type: IsarType.string,
     ),
-    r'password': PropertySchema(
+    r'isLoggedIn': PropertySchema(
       id: 1,
+      name: r'isLoggedIn',
+      type: IsarType.bool,
+    ),
+    r'password': PropertySchema(
+      id: 2,
       name: r'password',
       type: IsarType.string,
     ),
     r'phoneNumber': PropertySchema(
-      id: 2,
+      id: 3,
       name: r'phoneNumber',
       type: IsarType.string,
     )
@@ -81,8 +86,9 @@ void _localUserSerialize(
   Map<Type, List<int>> allOffsets,
 ) {
   writer.writeString(offsets[0], object.email);
-  writer.writeString(offsets[1], object.password);
-  writer.writeString(offsets[2], object.phoneNumber);
+  writer.writeBool(offsets[1], object.isLoggedIn);
+  writer.writeString(offsets[2], object.password);
+  writer.writeString(offsets[3], object.phoneNumber);
 }
 
 LocalUser _localUserDeserialize(
@@ -94,8 +100,9 @@ LocalUser _localUserDeserialize(
   final object = LocalUser();
   object.email = reader.readStringOrNull(offsets[0]);
   object.id = id;
-  object.password = reader.readStringOrNull(offsets[1]);
-  object.phoneNumber = reader.readStringOrNull(offsets[2]);
+  object.isLoggedIn = reader.readBoolOrNull(offsets[1]);
+  object.password = reader.readStringOrNull(offsets[2]);
+  object.phoneNumber = reader.readStringOrNull(offsets[3]);
   return object;
 }
 
@@ -109,8 +116,10 @@ P _localUserDeserializeProp<P>(
     case 0:
       return (reader.readStringOrNull(offset)) as P;
     case 1:
-      return (reader.readStringOrNull(offset)) as P;
+      return (reader.readBoolOrNull(offset)) as P;
     case 2:
+      return (reader.readStringOrNull(offset)) as P;
+    case 3:
       return (reader.readStringOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -403,6 +412,33 @@ extension LocalUserQueryFilter
         includeLower: includeLower,
         upper: upper,
         includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<LocalUser, LocalUser, QAfterFilterCondition> isLoggedInIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'isLoggedIn',
+      ));
+    });
+  }
+
+  QueryBuilder<LocalUser, LocalUser, QAfterFilterCondition>
+      isLoggedInIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'isLoggedIn',
+      ));
+    });
+  }
+
+  QueryBuilder<LocalUser, LocalUser, QAfterFilterCondition> isLoggedInEqualTo(
+      bool? value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'isLoggedIn',
+        value: value,
       ));
     });
   }
@@ -727,6 +763,18 @@ extension LocalUserQuerySortBy on QueryBuilder<LocalUser, LocalUser, QSortBy> {
     });
   }
 
+  QueryBuilder<LocalUser, LocalUser, QAfterSortBy> sortByIsLoggedIn() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isLoggedIn', Sort.asc);
+    });
+  }
+
+  QueryBuilder<LocalUser, LocalUser, QAfterSortBy> sortByIsLoggedInDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isLoggedIn', Sort.desc);
+    });
+  }
+
   QueryBuilder<LocalUser, LocalUser, QAfterSortBy> sortByPassword() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'password', Sort.asc);
@@ -778,6 +826,18 @@ extension LocalUserQuerySortThenBy
     });
   }
 
+  QueryBuilder<LocalUser, LocalUser, QAfterSortBy> thenByIsLoggedIn() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isLoggedIn', Sort.asc);
+    });
+  }
+
+  QueryBuilder<LocalUser, LocalUser, QAfterSortBy> thenByIsLoggedInDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isLoggedIn', Sort.desc);
+    });
+  }
+
   QueryBuilder<LocalUser, LocalUser, QAfterSortBy> thenByPassword() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'password', Sort.asc);
@@ -812,6 +872,12 @@ extension LocalUserQueryWhereDistinct
     });
   }
 
+  QueryBuilder<LocalUser, LocalUser, QDistinct> distinctByIsLoggedIn() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'isLoggedIn');
+    });
+  }
+
   QueryBuilder<LocalUser, LocalUser, QDistinct> distinctByPassword(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -838,6 +904,12 @@ extension LocalUserQueryProperty
   QueryBuilder<LocalUser, String?, QQueryOperations> emailProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'email');
+    });
+  }
+
+  QueryBuilder<LocalUser, bool?, QQueryOperations> isLoggedInProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'isLoggedIn');
     });
   }
 

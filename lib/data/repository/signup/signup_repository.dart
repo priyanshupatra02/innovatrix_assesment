@@ -12,13 +12,14 @@ class SignupRepository implements ISignupRepository {
 
   @override
   Future<Result<LocalUser?, APIException>> signup(
-      {required String phoneNumber, required String email, required String password}) async {
+      {required String phoneNumber, required String email, required String password, required bool isLoggedIn}) async {
     try {
       //if no user in db found
       final newUser = LocalUser()
         ..email = email
         ..password = password
-        ..phoneNumber = phoneNumber;
+        ..phoneNumber = phoneNumber
+        ..isLoggedIn = isLoggedIn;
 
       //if user is found in db
       //updating the value in the local db
@@ -27,6 +28,7 @@ class SignupRepository implements ISignupRepository {
         localUserFromDB?.email = email;
         localUserFromDB?.password = password;
         localUserFromDB?.phoneNumber = phoneNumber;
+        localUserFromDB?.isLoggedIn = false;
         if (localUserFromDB != null) {
           await isar.localUsers.put(
             localUserFromDB,

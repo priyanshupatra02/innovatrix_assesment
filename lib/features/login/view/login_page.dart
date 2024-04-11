@@ -3,12 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:innovatrix_assesment/core/local_storage/app_storage_pod.dart';
+import 'package:innovatrix_assesment/core/router/router.gr.dart';
+import 'package:innovatrix_assesment/data/entities/local_user_entity/local_user.dart';
+import 'package:innovatrix_assesment/features/login/const/login_form_keys.dart';
+import 'package:innovatrix_assesment/features/login/controller/login_pod.dart';
+import 'package:innovatrix_assesment/features/login/view/widgets/login_button.dart';
 import 'package:innovatrix_assesment/features/signup/view/widgets/account_existing_signin.dart';
 import 'package:innovatrix_assesment/features/signup/view/widgets/email_form.dart';
 import 'package:innovatrix_assesment/features/signup/view/widgets/email_text.dart';
 import 'package:innovatrix_assesment/features/signup/view/widgets/password_form.dart';
 import 'package:innovatrix_assesment/features/signup/view/widgets/password_text.dart';
 import 'package:innovatrix_assesment/shared/animated_widgets/fade_in_slide.dart';
+import 'package:isar/isar.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 @RoutePage(
@@ -33,24 +40,25 @@ class LoginView extends ConsumerWidget {
       HapticFeedback.lightImpact();
       Feedback.forTap(context);
       if (loginFormKey.currentState!.saveAndValidate()) {
-        // ref.read(loginProvider.notifier).signin(
-        //       email: loginFormKey.currentState!.fields[LoginFormKeys.email]!.value.toString(),
-        //       password: loginFormKey.currentState!.fields[LoginFormKeys.password]!.value.toString(),
-        //       onUserLoggedIn: (loginModelResponse) {
-        //         // if (loginModelResponse.user.jwt.isNotEmpty) {
-        //         //   context.router.replaceAll([const HomeRoute()]);
-        //         // } else {
-        //         //   context.router.replaceAll([const LoginBaseRoute()]);
-        //         // }
-        //       },
-        //     );
+        ref.read(loginProvider.notifier).signin(
+              email: loginFormKey.currentState!.fields[LoginFormKeys.email]!.value.toString(),
+              password: loginFormKey.currentState!.fields[LoginFormKeys.password]!.value.toString(),
+              isLoggedIn: true,
+              onUserLoggedIn: (loginModelResponse) {
+                if (loginModelResponse?.id != null && loginModelResponse?.isLoggedIn == true) {
+                  context.router.replaceAll([const HomeRoute()]);
+                } else {
+                  context.router.replaceAll([const LoginBaseRoute()]);
+                }
+              },
+            );
       }
     }
 
     return Scaffold(
-      // bottomNavigationBar: LoginButton(
-      //   onLogin: onLogin,
-      // ).pSymmetric(h: 20, v: 40),
+      bottomNavigationBar: LoginButton(
+        onLogin: onLogin,
+      ).pSymmetric(h: 20, v: 40),
       body: SafeArea(
         child: FormBuilder(
           key: loginFormKey,
@@ -70,8 +78,21 @@ class LoginView extends ConsumerWidget {
                 child: PasswordForm(),
               ),
               20.heightBox,
-              const AccountExistingWidget(
-                isSignin: true,
+              Consumer(
+                builder: (context, ref, child) {
+                  final isarProviderAsync = ref.watch(isarProvider);
+                  final localUserFromDB = isarProviderAsync.localUsers.where().findFirst();
+                  return FutureBuilder(
+                    future: localUserFromDB,
+                    builder: (context, snapshot) {
+                      return snapshot.data == null
+                          ? const AccountExistingWidget(
+                              isSignin: true,
+                            )
+                          : const SizedBox.shrink();
+                    },
+                  );
+                },
               ),
             ],
           ),

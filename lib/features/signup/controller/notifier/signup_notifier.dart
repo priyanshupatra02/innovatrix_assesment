@@ -24,6 +24,7 @@ class SignupAsyncNotifier extends AutoDisposeAsyncNotifier<SignupState> {
               phoneNumber: phoneNumber,
               email: email,
               password: password,
+              isLoggedIn: false,
             );
 
         return result.when(

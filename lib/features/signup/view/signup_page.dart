@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:innovatrix_assesment/core/local_storage/app_storage_pod.dart';
 import 'package:innovatrix_assesment/core/router/router.gr.dart';
 import 'package:innovatrix_assesment/features/signup/const/signup_form_keys.dart';
 import 'package:innovatrix_assesment/features/signup/controller/signup_pod.dart';
@@ -49,6 +50,7 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
               onUserSignedup: (signupModelResponse) {
                 if (signupModelResponse?.id != null) {
                   context.maybePop();
+                  ref.invalidate(isarProvider);
                 } else {
                   context.router.replaceAll([const LoginBaseRoute()]);
                 }

@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:innovatrix_assesment/features/homepage/view/widgets/home_page_body.dart';
+import 'package:innovatrix_assesment/features/homepage/view/widgets/logout_button.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget {
@@ -20,6 +21,9 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home Page'),
+         actions: const [
+          LogoutButton(),
+        ],
       ),
       body: const HomePageBody(),
     );
